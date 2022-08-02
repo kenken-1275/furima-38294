@@ -17,7 +17,6 @@
 
 ### Association
 - has_many :items
-- has_many :comments
 - has_many :dealings
 
 
@@ -36,27 +35,8 @@
 | user            | references | null: false,foreign_key:true |
 
 ### Association
-- has_many :comments
 - belongs_to :user
-- belongs_to :category
-- belongs_to :condition
-- belongs_to :postage
-- belongs_to :area
-- belongs_to :arrival_time
 - has_one :dealing
-
-
-## commentsテーブル
-
-| Column  | Type       | Options                      |
-| ------- | ---------- | ---------------------------- |
-| content | text       | null: false                  |
-| user    | references | null: false,foreign_key:true |
-| item    | references | null: false,foreign_key:true |
-
-### Association
-- belongs_to :user
-- belongs_to :item
 
 
 ## dealingsテーブル
@@ -85,5 +65,4 @@
 | dealing       | references | null: false,foreign_key:true |
 
 ### Association
-- belongs_to :area
 - belongs_to :dealing
