@@ -7,11 +7,6 @@ RSpec.describe User, type: :model do
     @user.chinese_first_name = "太郎"
     @user.japanese_last_name = "ヤマダ"
     @user.japanese_first_name = "タロウ"
-    @ano_user = FactoryBot.build(:user)
-    @ano_user.chinese_last_name = "加藤"
-    @ano_user.chinese_first_name = "新一"
-    @ano_user.japanese_last_name = "カトウ"
-    @ano_user.japanese_first_name = "シンイチ"
   end
 
   describe 'ユーザー新規登録' do
@@ -33,6 +28,11 @@ RSpec.describe User, type: :model do
       end
       it '既に登録されているemailでは登録できない' do
         @user.save
+        @ano_user = FactoryBot.build(:user)
+        @ano_user.chinese_last_name = "加藤"
+        @ano_user.chinese_first_name = "新一"
+        @ano_user.japanese_last_name = "カトウ"
+        @ano_user.japanese_first_name = "シンイチ"
         @ano_user.email = @user.email
         @ano_user.valid?
         expect(@ano_user.errors.full_messages).to include("Email has already been taken")
@@ -54,7 +54,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it 'passwordは半角英数字混合でないと登録できない' do
-        @user.password = "12345"
+        @user.password = "123456"
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include("Password は英字と数字の両方を含めて設定してください")
