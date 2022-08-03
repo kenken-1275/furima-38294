@@ -80,7 +80,6 @@ RSpec.describe Item, type: :model do
       it 'priceが全角数字では出品できない' do
         @item.price = "３００"
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
