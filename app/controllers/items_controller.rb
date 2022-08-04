@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_params, only: [:show,:edit,:update]
 
   def index
-    @items = Item.all.order('created_at DESC')
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
   private
 
   def set_params
-    item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def item_params
