@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
 
   def edit
     redirect_to action: :index unless @item.user.id == current_user.id
+    if Dealing.exists?(item_id:@item.id)
+      redirect_to root_path
+    end
   end
 
   def update
