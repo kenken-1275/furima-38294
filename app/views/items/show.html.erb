@@ -27,11 +27,9 @@
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
     <% end %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if user_signed_in? && current_user.id != @item.user.id && !Dealing.exists?(item_id:@item.id) %>
       <%= link_to "購入画面に進む", item_dealings_path(@item),class:"item-red-btn"%>
     <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
 
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>
