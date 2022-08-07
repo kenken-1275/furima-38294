@@ -21,4 +21,5 @@ class Item < ApplicationRecord
   belongs_to :arrival_time
 
   has_one_attached :image
+  has_one :dealing
 end
