@@ -71,3 +71,9 @@ gem 'payjp'
 gem "aws-sdk-s3", require: false
 
 gem 'psych', '~> 3.1'
+
+gem 'net-imap'
+
+gem 'net-pop'
+
+gem 'net-smtp'
